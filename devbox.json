@@ -1,0 +1,23 @@
+{
+  "packages": [
+    "python39@latest",
+    "nodejs@18.18.2",
+    "cairo@latest",
+    "imagemagick@latest"
+  ],
+  "env": {},
+  "shell": {
+    "init_hook": [
+      "source $VENV_DIR/bin/activate",
+      "bash devbox_scripts/invenio-cli.sh",
+      "touch $DEVBOX_PROJECT_ROOT/.envrc && source $DEVBOX_PROJECT_ROOT/.envrc",
+      "alias iab='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli assets build'",
+      "alias ir='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli run'",
+      "alias iaw='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli assets watch'",
+      "alias feierabend='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli services stop && exit'"
+    ],
+    "scripts": {
+      "install-empty": "bash devbox_scripts/install-empty.sh"
+    }
+  }
+}
