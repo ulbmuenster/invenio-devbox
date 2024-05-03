@@ -1,15 +1,33 @@
 {
-  "packages": [
-    "python39@latest",
-    "nodejs@18.18.2",
-    "cairo@latest",
-    "imagemagick@latest"
-  ],
-  "env": {},
+  "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.4/.schema/devbox.schema.json",
+  "packages": {
+    "python312": "latest",
+    "nodejs": "20.11.1",
+    "imagemagick": "latest",
+    "cairo": "latest",
+    "pcre": {
+      "version": "latest",
+      "outputs": ["dev"]
+    },
+    "icu": {
+      "version": "latest",
+      "outputs": ["dev"]
+    },
+    "libxcrypt": "latest",
+    "libxml2": {
+      "version": "latest",
+      "outputs": ["out", "py"]
+    }
+  },
+  "env": {
+    "PIPENV_VENV_IN_PROJECT": "1",
+    "PIPENV_VERBOSITY": "-1",
+    "LD_LIBRARY_PATH": "$DEVBOX_PROJECT_ROOT/.devbox/nix/profile/default/lib"
+  },
   "shell": {
     "init_hook": [
       "source $VENV_DIR/bin/activate",
-      "bash devbox_scripts/invenio-cli.sh",
+      "pip install invenio-cli",
       "touch $DEVBOX_PROJECT_ROOT/.envrc && source $DEVBOX_PROJECT_ROOT/.envrc",
       "alias iab='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli assets build'",
       "alias ir='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli run'",
