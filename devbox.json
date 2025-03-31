@@ -5,7 +5,11 @@
     "python312Packages.distutils": "latest",
     "nodejs": "20.11.1",
     "imagemagick": "latest",
-    "cairo": "latest",
+    "cairo": {
+      "version": "latest",
+      "outputs": ["out", "dev"]
+    },
+    "direnv": "latest",
     "libxcrypt": "latest",
     "openldap": {
       "version": "latest",
@@ -76,6 +80,7 @@
       "source $VENV_DIR/bin/activate",
       "pip install invenio-cli",
       "touch $DEVBOX_PROJECT_ROOT/.envrc && source $DEVBOX_PROJECT_ROOT/.envrc",
+      "direnv allow",
       "alias iab='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli assets build'",
       "alias ir='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli run'",
       "alias iaw='cd $DEVBOX_PROJECT_ROOT/$DEVBOX_INSTANCE_PATH && invenio-cli assets watch'",

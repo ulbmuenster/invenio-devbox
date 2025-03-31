@@ -56,10 +56,12 @@ function install_instance() {
     fi
     save_var_to_env DEVBOX_INSTANCE_PATH
     cd "$DEVBOX_INSTANCE_PATH"
-
+    # check if the cd was successful
+    if [ $? -ne 0 ]; then
+        echo_failure "Failed to change directory to $DEVBOX_INSTANCE_PATH"
+        exit 1
+    fi
     echo_info "Installing InvenioRDM instance in $DEVBOX_INSTANCE_PATH"
-
-    echo "Running invenio-cli install..."
 
     invenio_init_status=$?
     # install instance

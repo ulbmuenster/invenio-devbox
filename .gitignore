@@ -1,4 +1,5 @@
 */
 !devbox_scripts
 .envrc
+.invenio
 devbox.lock
