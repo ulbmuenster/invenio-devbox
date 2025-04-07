@@ -100,6 +100,25 @@ The aliases work directly after installation. (If not you might need to exit the
 - The warning `Skipping venv creation, '/home/myusername/InvenioRDM/invenio-devbox/.devbox/virtenv/python39Packages.pip/.venv' already exists You can activate the virtual environment by running 'source $VENV_DIR/bin/activate'`
   is due to Nix and must be ignored.
 
+## Remarks: macOS
+
+If you get an error like 
+
+```bash
+OSError: cannot load library 'libgobject-2.0-0': dlopen(libgobject-2.0-0, 0x0002): tried: 'libgobject-2.0-0' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibgobject-2.0-0' (no such file), '/usr/lib/libgobject-2.0-0' (no such file, not in dyld cache), 'libgobject-2.0-0' (no such file).  Additionally, ctypes.util.find_library() did not manage to locate a library called 'libgobject-2.0-0'
+```
+
+you might try `brew install glib pango harfbuzz fontconfig cairo` (see https://brew.sh/) and then:
+
+```bash
+sudo ln -s /opt/homebrew/opt/glib/lib/libgobject-2.0.0.dylib /usr/local/lib/gobject-2.0
+sudo ln -s /opt/homebrew/opt/pango/lib/libpango-1.0.dylib /usr/local/lib/pango-1.0
+sudo ln -s /opt/homebrew/opt/harfbuzz/lib/libharfbuzz.dylib /usr/local/lib/harfbuzz
+sudo ln -s /opt/homebrew/opt/fontconfig/lib/libfontconfig.1.dylib /usr/local/lib/fontconfig-1
+sudo ln -s /opt/homebrew/opt/pango/lib/libpangoft2-1.0.dylib /usr/local/lib/pangoft2-1.0
+sudo ln -s /opt/homebrew/opt/cairo/lib/libcairo.2.dylib /usr/local/lib/cairo
+```
+
 # License
 
 Copyright (C) 2023 University of Münster.
