@@ -119,6 +119,8 @@ sudo ln -s /opt/homebrew/opt/pango/lib/libpangoft2-1.0.dylib /usr/local/lib/pang
 sudo ln -s /opt/homebrew/opt/cairo/lib/libcairo.2.dylib /usr/local/lib/cairo
 ```
 
+If `/usr/local/lib/` does not exist: `sudo mkdir /usr/local/lib/`.
+
 # License
 
 Copyright (C) 2023 University of Münster.
